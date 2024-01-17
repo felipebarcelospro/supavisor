@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Instalação do Node.js e Laravel Mix
-curl -sL https://deb.nodesource.com/setup_16.x | bash -
+curl -sL https://deb.nodesource.com/setup_18.x | bash -
 apt-get install -y nodejs
 npm install -g npm@latest
 npm install -g laravel-mix@latest

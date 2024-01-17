@@ -1,0 +1,20 @@
+# Use the base image from Supabase Postgres
+FROM supabase/postgres:14.1.0.105
+
+# Copy the initialization scripts to the container
+COPY ./dev/postgres /docker-entrypoint-initdb.d/
+
+# Optional: Uncomment to set the MD5 authentication method on uninitialized databases
+# COPY ./dev/postgres/md5/etc/postgresql/pg_hba.conf /etc/postgresql/pg_hba.conf
+
+# Set environment variables
+ENV POSTGRES_HOST /var/run/postgresql
+ENV POSTGRES_PASSWORD postgres
+# Optional: Uncomment to set the MD5 authentication method on uninitialized databases
+# ENV POSTGRES_INITDB_ARGS --auth-host=md5
+
+# Expose the port the server listens on
+EXPOSE 5432
+
+# Set the default command (note that this can be overridden at runtime)
+CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]

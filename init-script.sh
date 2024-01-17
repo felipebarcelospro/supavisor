@@ -7,7 +7,7 @@ npm install -g npm@latest
 npm install -g laravel-mix@latest
 
 # Navega para a pasta do projeto Elixir
-cd /.
+cd /supavisor
 
 # Executa os comandos do Elixir
 mix deps.get && mix ecto.migrate --prefix _supavisor --log-migrator-sql

@@ -1,13 +1,16 @@
 DO $$
 BEGIN
+    -- Verifica e cria o role 'anon' se não existir
     IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'anon') THEN
         CREATE ROLE anon NOLOGIN NOINHERIT;
     END IF;
     
+    -- Verifica e cria o role 'authenticated' se não existir
     IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'authenticated') THEN
         CREATE ROLE authenticated NOLOGIN NOINHERIT;
     END IF;
 
+    -- Verifica e cria o role 'service_role' se não existir
     IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'service_role') THEN
         CREATE ROLE service_role NOLOGIN NOINHERIT BYPASSRLS;
     END IF;
@@ -17,7 +20,7 @@ $$;
 -- Concede privilégios básicos para os roles
 GRANT USAGE ON SCHEMA public TO anon, authenticated, service_role;
 
--- Altera os privilégios padrões para tabelas, funções e sequências
+-- Altera os privilégios padrões para novas tabelas, funções e sequências
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO anon, authenticated, service_role;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO anon, authenticated, service_role;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO anon, authenticated, service_role;

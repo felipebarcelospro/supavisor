@@ -2,7 +2,7 @@
 FROM supabase/postgres:14.1.0.105
 
 # Copy the initialization scripts to the container
-COPY ./dev/postgres /docker-entrypoint-initdb.d/
+# COPY ./dev/postgres /docker-entrypoint-initdb.d/
 
 # Optional: Uncomment to set the MD5 authentication method on uninitialized databases
 # COPY ./dev/postgres/md5/etc/postgresql/pg_hba.conf /etc/postgresql/pg_hba.conf

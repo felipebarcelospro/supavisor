@@ -1,10 +1,5 @@
 DO $$
-BEGIN
-    -- Verifica e cria o role 'anon' se não existir
-    IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'anon') THEN
-        CREATE ROLE anon NOLOGIN NOINHERIT;
-    END IF;
-    
+BEGIN    
     -- Verifica e cria o role 'authenticated' se não existir
     IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'authenticated') THEN
         CREATE ROLE authenticated NOLOGIN NOINHERIT;

@@ -15,6 +15,3 @@ ENV POSTGRES_PASSWORD postgres
 
 # Expose the port the server listens on
 EXPOSE 5432
-
-# Set the default command (note that this can be overridden at runtime)
-CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
